@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>重庆市第一二二中学校 - 校园动态</title>
+    <style>
+        :root {
+            --primary-color: #1a5f7a;
+            --secondary-color: #4c9f70;
+            --accent-color: #ffc107;
+            --light-color: #f8f9fa;
+            --dark-color: #343a40;
+            --gray-color: #6c757d;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Microsoft YaHei', sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        /* 头部样式 */
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo h1 {
+            font-size: 1.8rem;
+            margin-left: 10px;
+        }
+        
+        .logo-img {
+            width: 50px;
+            height: 50px;
+            background-color: var(--accent-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav li {
+            margin-left: 1.5rem;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: var(--accent-color);
+        }
+        
+        /* 横幅区域 */
+        .banner {
+            background: linear-gradient(rgba(26, 95, 122, 0.8), rgba(26, 95, 122, 0.8)), url('photo-1541339907198-e08756dedf3f.avif') center/cover no-repeat;
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+        }
+        
+        .banner h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .banner p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* 主要内容区 */
+        .main-content {
+            padding: 2rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--primary-color);
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--secondary-color);
+        }
+        
+        /* 新闻动态 */
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+        
+        .news-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .news-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .news-img {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .news-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .news-card:hover .news-img img {
+            transform: scale(1.05);
+        }
+        
+        .news-content {
+            padding: 1.5rem;
+        }
+        
+        .news-date {
+            color: var(--gray-color);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .news-title {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--dark-color);
+        }
+        
+        .news-excerpt {
+            color: var(--gray-color);
+            margin-bottom: 1rem;
+        }
+        
+        .read-more {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-block;
+        }
+        
+        /* 活动日历 */
+        .events {
+            background-color: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            margin-bottom: 3rem;
+        }
+        
+        .event-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1rem;
+        }
+        
+        .event-item {
+            display: flex;
+            border-left: 4px solid var(--secondary-color);
+            padding-left: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .event-date {
+            min-width: 70px;
+            text-align: center;
+            margin-right: 1rem;
+        }
+        
+        .event-day {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        
+        .event-month {
+            color: var(--gray-color);
+        }
+        
+        .event-info h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+        }
+        
+        /* 页脚 */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+        }
+        
+        .footer-bottom {
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 1rem;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+            }
+            
+            nav ul {
+                margin-top: 1rem;
+            }
+            
+            nav li {
+                margin: 0 0.5rem;
+            }
+            
+            .banner h2 {
+                font-size: 2rem;
+            }
+            
+            .banner p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 头部 -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <div class="logo-img">122中</div>
+                <h1>重庆市第一二二中学校</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#banner">首页</a></li>
+                    <li><a href="#container">新闻动态</a></li>
+                    <li><a href="#events">活动日历</a></li>
+                    <li><a href="#container">关于我们</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 横幅 -->
+    <section class="banner">
+        <div class="container">
+            <h2>欢迎来到重庆市第一二二中学校动态网站</h2>
+            <p>及时了解学校最新动态、活动安排和校园新闻</p>
+        </div>
+    </section>
+
+    <!-- 主要内容 -->
+    <main class="container main-content">
+        <!-- 新闻动态 -->
+        <section>
+            <h2 class="section-title">最新动态</h2>
+            <div class="news-grid">
+                <article class="news-card">
+                    <div class="news-img">
+                        <img src="微信图片_2025-09-18_215518_385.jpg" alt="新闻图片">
+                    </div>
+                    <div class="news-content">
+                        <div class="news-date">2025年4月9日&nbsp;&nbsp;12:16 &nbsp;&nbsp;重庆</div>
+                        <h3 class="news-title">学雷锋精神，做真美少年——重庆市第一二二中学2025年“学雷锋•树新风”活动月</h3>
+                        <p class="news-excerpt">在新时代德育工作的引领下，为进一步强化学生的思想道德建设，助力学生树立正确的人生观、世界观和价值观，重庆市第一二二中学紧紧围绕“学雷锋精神 做真美少年”这一主题，精心组织并开展了一系列丰富多彩、意义深远的活动。</p>
+                        <a href="https://mp.weixin.qq.com/s/wMFbadoAhQJxnh4j2KU1UA" class="read-more">阅读更多 &rarr;</a>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <div class="news-img">
+                        <img src="微信图片_2025-09-18_220059_281.jpg" alt="新闻图片">
+                    </div>
+                    <div class="news-content">
+                        <div class="news-date">2025年4月1日&nbsp;&nbsp;15:51 &nbsp;&nbsp;重庆</div>
+                        <h3 class="news-title">精准引领促发展 专项视导启新程</h3>
+                        <p class="news-excerpt">精准引领促发展&nbsp;&nbsp;专项视导启新程</p>
+                        <a href="https://mp.weixin.qq.com/s/qeqB9p9uWBDMu68IF6BDQA" class="read-more">阅读更多 &rarr;</a>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <div class="news-img">
+                        <img src="微信图片_2025-09-18_220519_802.jpg" alt="新闻图片">
+                    </div>
+                    <div class="news-content">
+                        <div class="news-date">2025年3月17日&nbsp;&nbsp;10:39 &nbsp;&nbsp;重庆</div>
+                        <h3 class="news-title">春满校园 趣乐同行</h3>
+                        <p class="news-excerpt">春意盎然，万物生辉。在第115个“三八”国际劳动妇女节来临之际，122中工会以“春满校园 趣乐同行”为主题，精心策划了一场别开生面的教职工趣味运动会。全校教职工热情参与，在欢声笑语中展现教师风采，传递团队力量。</p>
+                        <a href="https://mp.weixin.qq.com/s/nkS-ts3NmoT1qmQuFdQiGg" class="read-more">阅读更多 &rarr;</a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- 活动日历 -->
+        <section>
+            <h2 class="section-title">近期活动</h2>
+            <div class="events">
+                <div class="event-list">
+                    <div class="event-item">
+                        <div class="event-date">
+                            <div class="event-day">10月</div>
+                            <div class="event-month"> </div>
+                        </div>
+                        <div class="event-info">
+                            <h3>无</h3>
+                            <p>时间:无 </p>
+                            <p>地点:无 </p>
+                        </div>
+                    </div>
+
+                    <div class="event-item">
+                        <div class="event-date">
+                            <div class="event-day">11月</div>
+                            <div class="event-month"> </div>
+                        </div>
+                        <div class="event-info">
+                            <h3>期中考试</h3>
+                            <p>时间: 无</p>
+                            <p>地点: 各教室</p>
+                        </div>
+                    </div>
+
+                    <div class="event-item">
+                        <div class="event-date">
+                            <div class="event-day">11月</div>
+                            <div class="event-month"> </div>
+                        </div>
+                        <div class="event-info">
+                            <h3>无</h3>
+                            <p>时间: 无</p>
+                            <p>地点: 学校操场</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>关注我们</h3>
+                    <p>微信公众号: 重庆市第一二二中学校</p>
+		    <p>QQ频道号: CQ122zx122</p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 重庆市第一二二中学校. 版权所有</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 简单的JavaScript功能：显示当前年份
+        document.addEventListener('DOMContentLoaded', function() {
+            const yearElement = document.querySelector('.footer-bottom p');
+            if (yearElement) {
+                const currentYear = new Date().getFullYear();
+                yearElement.innerHTML = `&copy; ${currentYear} 重庆市第一二二中学校. 版权所有`;
+            }
+        });
+    </script>
+</body>
+</html>
