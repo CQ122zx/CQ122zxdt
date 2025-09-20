@@ -4,7 +4,59 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>重庆市第一二二中学校-校园动态</title>
+    <!-- 新增HTTP/2关键资源预加载配置 -->
+    <link rel="preload" href="photo-1541339907198-e08756dedf3f.jpg" as="image" type="image/jpeg">
+    <link rel="preload" href="微信图片_2025-09-18_215518_385.jpg" as="image" type="image/jpeg">
+    <link rel="preload" href="微信图片_2025-09-18_220059_281.jpg" as="image" type="image/jpeg">
+    <link rel="preload" href="微信图片_2025-09-18_220519_802.jpg" as="image" type="image/jpeg">
+    <!-- 新增MCP服务器代码相关样式 -->
     <style>
+        /* GitHub MCP服务器代码样式 - 仅新增此段样式，不修改原有样式 */
+        .mcp-server-code {
+            background-color: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            margin: 3rem 0;
+        }
+        .code-title {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+        .code-snippet {
+            background-color: #f8f9fa;
+            border-radius: 4px;
+            padding: 1rem;
+            overflow-x: auto;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9rem;
+            color: #333;
+            border-left: 3px solid var(--secondary-color);
+        }
+        .code-snippet .keyword {
+            color: #0033b3;
+            font-weight: 600;
+        }
+        .code-snippet .comment {
+            color: #6c757d;
+            font-style: italic;
+        }
+        .code-link {
+            display: inline-block;
+            margin-top: 1rem;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        .code-link:hover {
+            color: var(--secondary-color);
+            text-decoration: underline;
+        }
+
         :root {
             --primary-color: #1a5f7a;
             --secondary-color: #4c9f70;
@@ -149,6 +201,10 @@
         
         /* 新增：活动日历区域锚点偏移 */
         #events {
+            scroll-margin-top: 80px;
+        }
+        /* 新增：MCP代码区域锚点偏移 */
+        #mcp-code {
             scroll-margin-top: 80px;
         }
         
@@ -332,7 +388,7 @@
             }
             
             /* 响应式下锚点偏移适配 */
-            #banner, #news-section, #events {
+            #banner, #news-section, #events, #mcp-code {
                 scroll-margin-top: 120px;
             }
         }
@@ -454,7 +510,6 @@
                 </div>
             </div>
         </section>
-    </main>
 
     <!-- 页脚：内容完全不变 -->
     <footer>
@@ -473,7 +528,7 @@
         </div>
     </footer>
 
-    <!-- 脚本：新增导航切换逻辑，保留原有年份显示功能 -->
+    <!-- 脚本：新增导航切换逻辑，保留原有年份显示功能 + 新增HTTP/2脚本优化 -->
     <script>
         // 简单的JavaScript功能：显示当前年份（原有代码保留）
         document.addEventListener('DOMContentLoaded', function() {
@@ -483,7 +538,7 @@
                 yearElement.innerHTML = `&copy; ${currentYear} 重庆市第一二二中学校. 版权所有`;
             }
 
-            // 新增：导航切换核心逻辑
+            // 新增：导航切换核心逻辑（原有代码保留）
             const navLinks = document.querySelectorAll('.nav-link');
             const navHeight = document.querySelector('header').offsetHeight;
 
@@ -513,7 +568,7 @@
             // 2. 滚动时自动更新导航高亮
             window.addEventListener('scroll', function() {
                 const scrollPosition = window.scrollY + navHeight + 20; // 偏移量，提前触发高亮
-                const sectionIds = ['#banner', '#news-section', '#events'];
+                const sectionIds = ['#banner', '#news-section', '#events', '#mcp-code']; // 新增MCP代码区域ID
 
                 // 遍历所有区域，判断当前滚动位置所在区域
                 sectionIds.forEach((sectionId, index) => {
@@ -533,6 +588,19 @@
 
             // 3. 初始化时触发一次，确保首页导航默认高亮
             navLinks[0].classList.add('active');
+
+            // 新增HTTP/2脚本优化：延迟加载非关键资源，利用多路复用特性
+            if (window.addEventListener) {
+                // 页面加载完成后加载非首屏图片（若未自动加载）
+                window.addEventListener('load', function() {
+                    const newsImgs = document.querySelectorAll('.news-img img');
+                    newsImgs.forEach(img => {
+                        if (!img.complete) {
+                            img.src = img.src; // 触发重新加载，确保HTTP/2复用连接
+                        }
+                    });
+                });
+            }
         });
     </script>
 </body>
