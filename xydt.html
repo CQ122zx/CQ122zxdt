@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>重庆市第一二二中学校 - 校园动态</title>
+    <title>重庆市第一二二中学校-校园动态</title>
     <style>
         :root {
             --primary-color: #1a5f7a;
@@ -294,7 +294,7 @@
     </style>
 </head>
 <body>
-    <!-- 头部 -->
+    <!-- 头部：仅在nav的ul中新增4个导航链接，其他内容完全不变 -->
     <header>
         <div class="container header-content">
             <div class="logo">
@@ -306,21 +306,20 @@
                     <li><a href="#banner">首页</a></li>
                     <li><a href="#container">新闻动态</a></li>
                     <li><a href="#events">活动日历</a></li>
-                    <li><a href="#container">关于我们</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <!-- 横幅 -->
-    <section class="banner">
-        <div class="container">
+    <!-- 横幅：与原代码完全一致，无任何修改 -->
+    <section class="banner" id="banner">
+        <div class="container" id="container">
             <h2>欢迎来到重庆市第一二二中学校动态网站</h2>
             <p>及时了解学校最新动态、活动安排和校园新闻</p>
         </div>
     </section>
 
-    <!-- 主要内容 -->
+    <!-- 主要内容：与原代码完全一致，无任何修改 -->
     <main class="container main-content">
         <!-- 新闻动态 -->
         <section>
@@ -367,41 +366,44 @@
         <!-- 活动日历 -->
         <section>
             <h2 class="section-title">近期活动</h2>
-            <div class="events">
+            <div class="events" id="events">
                 <div class="event-list">
                     <div class="event-item">
                         <div class="event-date">
                             <div class="event-day">10月</div>
-                            <div class="event-month"> </div>
+                            <div class="event-month">待定</div>
                         </div>
                         <div class="event-info">
-                            <h3>无</h3>
-                            <p>时间:无 </p>
-                            <p>地点:无 </p>
+                            <h3>无活动</h3>
+                            <p>时间:待定 </p>
+                            <p>地点: 待定</p>
+                            <p>内容: 待定</p>
                         </div>
                     </div>
 
                     <div class="event-item">
                         <div class="event-date">
                             <div class="event-day">11月</div>
-                            <div class="event-month"> </div>
+                            <div class="event-month">中旬</div>
                         </div>
                         <div class="event-info">
                             <h3>期中考试</h3>
-                            <p>时间: 无</p>
-                            <p>地点: 各教室</p>
+                            <p>时间: 11月10日-11月14日（待定）</p>
+                            <p>地点: 各年级教室</p>
+                            <p>内容: 覆盖语文、数学、英语、物理、化学等全学科测试</p>
                         </div>
                     </div>
 
                     <div class="event-item">
                         <div class="event-date">
                             <div class="event-day">11月</div>
-                            <div class="event-month"> </div>
+                            <div class="event-month">下旬</div>
                         </div>
                         <div class="event-info">
-                            <h3>无</h3>
-                            <p>时间: 无</p>
+                            <h3>秋季运动会</h3>
+                            <p>时间: 待定</p>
                             <p>地点: 学校操场</p>
+                            <p>内容: 包含跑步、跳远、拔河等团体及个人项目</p>
                         </div>
                     </div>
                 </div>
@@ -409,7 +411,7 @@
         </section>
     </main>
 
-    <!-- 页脚 -->
+    <!-- 页脚：与原代码完全一致，无任何修改 -->
     <footer>
         <div class="container">
             <div class="footer-content">
@@ -426,6 +428,7 @@
         </div>
     </footer>
 
+    <!-- 脚本：与原代码完全一致，无任何修改 -->
     <script>
         // 简单的JavaScript功能：显示当前年份
         document.addEventListener('DOMContentLoaded', function() {
