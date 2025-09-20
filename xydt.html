@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>重庆市第一二二中学校-校园动态</title>
+    <!-- 修正HTTP/2预加载文件：同步页面实际使用的webp格式，删除无效jpg预加载 -->
+    <link rel="preload" href="photo-1541339907198-e08756dedf3f.webp" as="image" type="image/webp">
+    <link rel="preload" href="微信图片_2025-09-18_215518_385.webp" as="image" type="image/webp">
+    <link rel="preload" href="微信图片_2025-09-18_220059_281.webp" as="image" type="image/webp">
+    <link rel="preload" href="微信图片_2025-09-18_220519_802.webp" as="image" type="image/webp">
+    <!-- 新增MCP服务器代码相关样式 -->
+    <style>
+        /* GitHub MCP服务器代码样式 - 仅新增此段样式，不修改原有样式 */
+        .mcp-server-code {
+            background-color: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            margin: 3rem 0;
+        }
+        .code-title {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+        .code-snippet {
+            background-color: #f8f9fa;
+            border-radius: 4px;
+            padding: 1rem;
+            overflow-x: auto;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9rem;
+            color: #333;
+            border-left: 3px solid var(--secondary-color);
+        }
+        .code-snippet .keyword {
+            color: #0033b3;
+            font-weight: 600;
+        }
+        .code-snippet .comment {
+            color: #6c757d;
+            font-style: italic;
+        }
+        .code-link {
+            display: inline-block;
+            margin-top: 1rem;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        .code-link:hover {
+            color: var(--secondary-color);
+            text-decoration: underline;
+        }
+
+        :root {
+            --primary-color: #1a5f7a;
+            --secondary-color: #4c9f70;
+            --accent-color: #ffc107;
+            --light-color: #f8f9fa;
+            --dark-color: #343a40;
+            --gray-color: #6c757d;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Microsoft YaHei', sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+            scroll-behavior: smooth; /* 新增：平滑滚动基础配置 */
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        /* 头部样式 - 新增导航高亮核心样式 */
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky; /* 新增：导航栏粘性定位，滚动时固定顶部 */
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo h1 {
+            font-size: 1.8rem;
+            margin-left: 10px;
+        }
+        
+        .logo-img {
+            width: 50px;
+            height: 50px;
+            background-color: var(--accent-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav li {
+            margin-left: 1.5rem;
+            position: relative; /* 新增：为下划线定位做准备 */
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 5px 0; /* 新增：增加点击区域，优化交互 */
+            display: inline-block;
+        }
+        
+        /* 新增：当前导航项高亮样式 */
+        nav a.active,
+        nav a:hover {
+            color: var(--accent-color);
+        }
+        
+        /* 新增：导航项下划线动画 */
+        nav a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--accent-color);
+            transition: width 0.3s;
+        }
+        
+        nav a.active:after,
+        nav a:hover:after {
+            width: 100%;
+        }
+        
+        /* 横幅区域 - 新增锚点偏移适配，避免导航栏遮挡 */
+        #banner {
+            scroll-margin-top: 80px;
+        }
+        
+        .banner {
+            background: linear-gradient(rgba(26, 95, 122, 0.8), rgba(26, 95, 122, 0.8)), url('photo-1541339907198-e08756dedf3f.webp') center/cover no-repeat;
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+        }
+        
+        .banner h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .banner p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* 主要内容区 - 新增各区域锚点偏移适配 */
+        .main-content {
+            padding: 2rem 0;
+        }
+        
+        /* 新增：新闻动态区域锚点偏移 */
+        #news-section {
+            scroll-margin-top: 80px;
+        }
+        
+        /* 新增：活动日历区域锚点偏移 */
+        #events {
+            scroll-margin-top: 80px;
+        }
+        /* 新增：MCP代码区域锚点偏移 */
+        #mcp-code {
+            scroll-margin-top: 80px;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--primary-color);
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--secondary-color);
+        }
+        
+        /* 新闻动态 */
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+        
+        .news-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .news-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .news-img {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .news-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .news-card:hover .news-img img {
+            transform: scale(1.05);
+        }
+        
+        .news-content {
+            padding: 1.5rem;
+        }
+        
+        .news-date {
+            color: var(--gray-color);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .news-title {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--dark-color);
+        }
+        
+        .news-excerpt {
+            color: var(--gray-color);
+            margin-bottom: 1rem;
+        }
+        
+        .read-more {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-block;
+        }
+        
+        /* 活动日历 */
+        .events {
+            background-color: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            margin-bottom: 3rem;
+        }
+        
+        .event-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1rem;
+        }
+        
+        .event-item {
+            display: flex;
+            border-left: 4px solid var(--secondary-color);
+            padding-left: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .event-date {
+            min-width: 70px;
+            text-align: center;
+            margin-right: 1rem;
+        }
+        
+        .event-day {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        
+        .event-month {
+            color: var(--gray-color);
+        }
+        
+        .event-info h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+        }
+        
+        /* 页脚 */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+        }
+        
+        .footer-bottom {
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 1rem;
+        }
+        
+        /* 响应式设计 - 新增导航高亮适配 */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+            }
+            
+            nav ul {
+                margin-top: 1rem;
+            }
+            
+            nav li {
+                margin: 0 0.5rem;
+            }
+            
+            .banner h2 {
+                font-size: 2rem;
+            }
+            
+            .banner p {
+                font-size: 1rem;
+            }
+            
+            /* 响应式下锚点偏移适配 */
+            #banner, #news-section, #events, #mcp-code {
+                scroll-margin-top: 120px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 头部：仅为导航项添加nav-link类，用于JS定位，其他内容不变 -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <div class="logo-img">122中</div>
+                <h1>重庆市第一二二中学校</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#banner" class="nav-link active">首页</a></li>
+                    <li><a href="#news-section" class="nav-link">新闻动态</a></li>
+                    <li><a href="#events" class="nav-link">活动日历</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 横幅：仅保留原有id，其他内容不变 -->
+    <section class="banner" id="banner">
+        <div class="container" id="container">
+            <h2>欢迎来到重庆市第一二二中学校动态网站</h2>
+            <p>及时了解学校最新动态、活动安排和校园新闻</p>
+        </div>
+    </section>
+
+    <!-- 主要内容：仅为新闻动态区域添加id="news-section"，其他内容不变 -->
+    <main class="container main-content">
+        <!-- 新闻动态：新增id="news-section"，用于导航定位 -->
+        <section id="news-section">
+            <h2 class="section-title">最新动态</h2>
+            <div class="news-grid">
+                <article class="news-card">
+                    <div class="news-img">
+                        <img src="微信图片_2025-09-18_215518_385.webp" alt="新闻图片">
+                    </div>
+                    <div class="news-content">
+                        <div class="news-date">2025年4月9日&nbsp;&nbsp;12:16 &nbsp;&nbsp;重庆</div>
+                        <h3 class="news-title">学雷锋精神，做真美少年——重庆市第一二二中学2025年“学雷锋•树新风”活动月</h3>
+                        <p class="news-excerpt">在新时代德育工作的引领下，为进一步强化学生的思想道德建设，助力学生树立正确的人生观、世界观和价值观，重庆市第一二二中学紧紧围绕“学雷锋精神 做真美少年”这一主题，精心组织并开展了一系列丰富多彩、意义深远的活动。</p>
+                        <a href="https://mp.weixin.qq.com/s/wMFbadoAhQJxnh4j2KU1UA" class="read-more">阅读更多 &rarr;</a>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <div class="news-img">
+                        <img src="微信图片_2025-09-18_220059_281.webp" alt="新闻图片">
+                    </div>
+                    <div class="news-content">
+                        <div class="news-date">2025年4月1日&nbsp;&nbsp;15:51 &nbsp;&nbsp;重庆</div>
+                        <h3 class="news-title">精准引领促发展 专项视导启新程</h3>
+                        <p class="news-excerpt">精准引领促发展&nbsp;&nbsp;专项视导启新程</p>
+                        <a href="https://mp.weixin.qq.com/s/qeqB9p9uWBDMu68IF6BDQA" class="read-more">阅读更多 &rarr;</a>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <div class="news-img">
+                        <img src="微信图片_2025-09-18_220519_802.webp" alt="新闻图片">
+                    </div>
+                    <div class="news-content">
+                        <div class="news-date">2025年3月17日&nbsp;&nbsp;10:39 &nbsp;&nbsp;重庆</div>
+                        <h3 class="news-title">春满校园 趣乐同行</h3>
+                        <p class="news-excerpt">春意盎然，万物生辉。在第115个“三八”国际劳动妇女节来临之际，122中工会以“春满校园 趣乐同行”为主题，精心策划了一场别开生面的教职工趣味运动会。全校教职工热情参与，在欢声笑语中展现教师风采，传递团队力量。</p>
+                        <a href="https://mp.weixin.qq.com/s/nkS-ts3NmoT1qmQuFdQiGg" class="read-more">阅读更多 &rarr;</a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- 活动日历：保留原有id，其他内容不变 -->
+        <section>
+            <h2 class="section-title">近期活动</h2>
+            <div class="events" id="events">
+                <div class="event-list">
+                    <div class="event-item">
+                        <div class="event-date">
+                            <div class="event-day">10月</div>
+                            <div class="event-month">待定</div>
+                        </div>
+                        <div class="event-info">
+                            <h3>无活动</h3>
+                            <p>时间:待定 </p>
+                            <p>地点: 待定</p>
+                            <p>内容: 待定</p>
+                        </div>
+                    </div>
+
+                    <div class="event-item">
+                        <div class="event-date">
+                            <div class="event-day">11月</div>
+                            <div class="event-month">中旬</div>
+                        </div>
+                        <div class="event-info">
+                            <h3>期中考试</h3>
+                            <p>时间: 11月10日-11月14日（待定）</p>
+                            <p>地点: 各年级教室</p>
+                            <p>内容: 覆盖语文、数学、英语、物理、化学等全学科测试</p>
+                        </div>
+                    </div>
+
+                    <div class="event-item">
+                        <div class="event-date">
+                            <div class="event-day">11月</div>
+                            <div class="event-month">下旬</div>
+                        </div>
+                        <div class="event-info">
+                            <h3>秋季运动会</h3>
+                            <p>时间: 待定</p>
+                            <p>地点: 学校操场</p>
+                            <p>内容: 包含跑步、跳远、拔河等团体及个人项目</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    <!-- 页脚：内容完全不变 -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>关注我们</h3>
+                    <p>微信公众号: 重庆市第一二二中学校</p>
+		    <p>QQ频道号: CQ122zx122</p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 重庆市第一二二中学校. 版权所有</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 脚本：新增导航切换逻辑，保留原有年份显示功能 + 修正HTTP/2脚本优化 -->
+    <script>
+        // 简单的JavaScript功能：显示当前年份（原有代码保留）
+        document.addEventListener('DOMContentLoaded', function() {
+            const yearElement = document.querySelector('.footer-bottom p');
+            if (yearElement) {
+                const currentYear = new Date().getFullYear();
+                yearElement.innerHTML = `&copy; ${currentYear} 重庆市第一二二中学校. 版权所有`;
+            }
+
+            // 新增：导航切换核心逻辑（原有代码保留）
+            const navLinks = document.querySelectorAll('.nav-link');
+            const navHeight = document.querySelector('header').offsetHeight;
+
+            // 1. 点击导航切换高亮与滚动
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // 获取目标区域ID
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        // 切换导航高亮状态
+                        navLinks.forEach(l => l.classList.remove('active'));
+                        this.classList.add('active');
+                        
+                        // 平滑滚动到目标区域（适配导航栏高度，避免遮挡）
+                        window.scrollTo({
+                            top: targetElement.offsetTop - navHeight + 10, // 微调偏移量，优化显示
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // 2. 滚动时自动更新导航高亮
+            window.addEventListener('scroll', function() {
+                const scrollPosition = window.scrollY + navHeight + 20; // 偏移量，提前触发高亮
+                const sectionIds = ['#banner', '#news-section', '#events', '#mcp-code']; // 新增MCP代码区域ID
+
+                // 遍历所有区域，判断当前滚动位置所在区域
+                sectionIds.forEach((sectionId, index) => {
+                    const section = document.querySelector(sectionId);
+                    if (section) {
+                        const sectionTop = section.offsetTop;
+                        const sectionBottom = sectionTop + section.offsetHeight;
+
+                        // 若当前滚动位置在该区域内，高亮对应导航
+                        if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+                            navLinks.forEach(link => link.classList.remove('active'));
+                            navLinks[index].classList.add('active');
+                        }
+                    }
+                });
+            });
+
+            // 3. 初始化时触发一次，确保首页导航默认高亮
+            navLinks[0].classList.add('active');
+
+            // 修正HTTP/2脚本优化：明确指定webp格式图片路径，确保加载匹配
+            if (window.addEventListener) {
+                // 页面加载完成后加载非首屏webp图片
+                window.addEventListener('load', function() {
+                    const newsImgs = document.querySelectorAll('.news-img img');
+                    newsImgs.forEach(img => {
+                        // 仅对webp格式图片进行延迟加载处理
+                        if (!img.complete && img.src.endsWith('.webp')) {
+                            img.src = img.src; // 利用HTTP/2多路复用特性重新触发加载
+                        }
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+</html>
