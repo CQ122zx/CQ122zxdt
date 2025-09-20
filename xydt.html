@@ -25,6 +25,7 @@
             background-color: #f5f5f5;
             color: #333;
             line-height: 1.6;
+            scroll-behavior: smooth; /* 新增：平滑滚动基础配置 */
         }
         
         .container {
@@ -33,12 +34,15 @@
             margin: 0 auto;
         }
         
-        /* 头部样式 */
+        /* 头部样式 - 新增导航高亮核心样式 */
         header {
             background-color: var(--primary-color);
             color: white;
             padding: 1rem 0;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky; /* 新增：导航栏粘性定位，滚动时固定顶部 */
+            top: 0;
+            z-index: 100;
         }
         
         .header-content {
@@ -75,6 +79,7 @@
         
         nav li {
             margin-left: 1.5rem;
+            position: relative; /* 新增：为下划线定位做准备 */
         }
         
         nav a {
@@ -82,15 +87,40 @@
             text-decoration: none;
             font-weight: 500;
             transition: color 0.3s;
+            padding: 5px 0; /* 新增：增加点击区域，优化交互 */
+            display: inline-block;
         }
         
+        /* 新增：当前导航项高亮样式 */
+        nav a.active,
         nav a:hover {
             color: var(--accent-color);
         }
         
-        /* 横幅区域 */
+        /* 新增：导航项下划线动画 */
+        nav a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--accent-color);
+            transition: width 0.3s;
+        }
+        
+        nav a.active:after,
+        nav a:hover:after {
+            width: 100%;
+        }
+        
+        /* 横幅区域 - 新增锚点偏移适配，避免导航栏遮挡 */
+        #banner {
+            scroll-margin-top: 80px;
+        }
+        
         .banner {
-            background: linear-gradient(rgba(26, 95, 122, 0.8), rgba(26, 95, 122, 0.8)), url('photo-1541339907198-e08756dedf3f.avif') center/cover no-repeat;
+            background: linear-gradient(rgba(26, 95, 122, 0.8), rgba(26, 95, 122, 0.8)), url('photo-1541339907198-e08756dedf3f.jpg') center/cover no-repeat;
             color: white;
             padding: 3rem 0;
             text-align: center;
@@ -107,9 +137,19 @@
             margin: 0 auto;
         }
         
-        /* 主要内容区 */
+        /* 主要内容区 - 新增各区域锚点偏移适配 */
         .main-content {
             padding: 2rem 0;
+        }
+        
+        /* 新增：新闻动态区域锚点偏移 */
+        #news-section {
+            scroll-margin-top: 80px;
+        }
+        
+        /* 新增：活动日历区域锚点偏移 */
+        #events {
+            scroll-margin-top: 80px;
         }
         
         .section-title {
@@ -269,7 +309,7 @@
             padding-top: 1rem;
         }
         
-        /* 响应式设计 */
+        /* 响应式设计 - 新增导航高亮适配 */
         @media (max-width: 768px) {
             .header-content {
                 flex-direction: column;
@@ -290,11 +330,16 @@
             .banner p {
                 font-size: 1rem;
             }
+            
+            /* 响应式下锚点偏移适配 */
+            #banner, #news-section, #events {
+                scroll-margin-top: 120px;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- 头部：仅在nav的ul中新增4个导航链接，其他内容完全不变 -->
+    <!-- 头部：仅为导航项添加nav-link类，用于JS定位，其他内容不变 -->
     <header>
         <div class="container header-content">
             <div class="logo">
@@ -303,15 +348,15 @@
             </div>
             <nav>
                 <ul>
-                    <li><a href="#banner">首页</a></li>
-                    <li><a href="#container">新闻动态</a></li>
-                    <li><a href="#events">活动日历</a></li>
+                    <li><a href="#banner" class="nav-link active">首页</a></li>
+                    <li><a href="#news-section" class="nav-link">新闻动态</a></li>
+                    <li><a href="#events" class="nav-link">活动日历</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <!-- 横幅：与原代码完全一致，无任何修改 -->
+    <!-- 横幅：仅保留原有id，其他内容不变 -->
     <section class="banner" id="banner">
         <div class="container" id="container">
             <h2>欢迎来到重庆市第一二二中学校动态网站</h2>
@@ -319,10 +364,10 @@
         </div>
     </section>
 
-    <!-- 主要内容：与原代码完全一致，无任何修改 -->
+    <!-- 主要内容：仅为新闻动态区域添加id="news-section"，其他内容不变 -->
     <main class="container main-content">
-        <!-- 新闻动态 -->
-        <section>
+        <!-- 新闻动态：新增id="news-section"，用于导航定位 -->
+        <section id="news-section">
             <h2 class="section-title">最新动态</h2>
             <div class="news-grid">
                 <article class="news-card">
@@ -363,7 +408,7 @@
             </div>
         </section>
 
-        <!-- 活动日历 -->
+        <!-- 活动日历：保留原有id，其他内容不变 -->
         <section>
             <h2 class="section-title">近期活动</h2>
             <div class="events" id="events">
@@ -411,7 +456,7 @@
         </section>
     </main>
 
-    <!-- 页脚：与原代码完全一致，无任何修改 -->
+    <!-- 页脚：内容完全不变 -->
     <footer>
         <div class="container">
             <div class="footer-content">
@@ -428,15 +473,66 @@
         </div>
     </footer>
 
-    <!-- 脚本：与原代码完全一致，无任何修改 -->
+    <!-- 脚本：新增导航切换逻辑，保留原有年份显示功能 -->
     <script>
-        // 简单的JavaScript功能：显示当前年份
+        // 简单的JavaScript功能：显示当前年份（原有代码保留）
         document.addEventListener('DOMContentLoaded', function() {
             const yearElement = document.querySelector('.footer-bottom p');
             if (yearElement) {
                 const currentYear = new Date().getFullYear();
                 yearElement.innerHTML = `&copy; ${currentYear} 重庆市第一二二中学校. 版权所有`;
             }
+
+            // 新增：导航切换核心逻辑
+            const navLinks = document.querySelectorAll('.nav-link');
+            const navHeight = document.querySelector('header').offsetHeight;
+
+            // 1. 点击导航切换高亮与滚动
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // 获取目标区域ID
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        // 切换导航高亮状态
+                        navLinks.forEach(l => l.classList.remove('active'));
+                        this.classList.add('active');
+                        
+                        // 平滑滚动到目标区域（适配导航栏高度，避免遮挡）
+                        window.scrollTo({
+                            top: targetElement.offsetTop - navHeight + 10, // 微调偏移量，优化显示
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // 2. 滚动时自动更新导航高亮
+            window.addEventListener('scroll', function() {
+                const scrollPosition = window.scrollY + navHeight + 20; // 偏移量，提前触发高亮
+                const sectionIds = ['#banner', '#news-section', '#events'];
+
+                // 遍历所有区域，判断当前滚动位置所在区域
+                sectionIds.forEach((sectionId, index) => {
+                    const section = document.querySelector(sectionId);
+                    if (section) {
+                        const sectionTop = section.offsetTop;
+                        const sectionBottom = sectionTop + section.offsetHeight;
+
+                        // 若当前滚动位置在该区域内，高亮对应导航
+                        if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+                            navLinks.forEach(link => link.classList.remove('active'));
+                            navLinks[index].classList.add('active');
+                        }
+                    }
+                });
+            });
+
+            // 3. 初始化时触发一次，确保首页导航默认高亮
+            navLinks[0].classList.add('active');
         });
     </script>
 </body>
