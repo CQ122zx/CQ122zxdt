@@ -5,17 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>重庆市第一二二中学校-校园动态</title>
     <!-- 网站图标 -->
-    <link rel="icon" href="Image_1760104952910_edit_51856054479435.png" type="image/png"> <!-- 标准ICO格式（推荐） -->
-    <link rel="shortcut icon" href="Image_1760104952910_edit_51856054479435.png" type="image/png"> <!-- 兼容旧浏览器 -->
-    <link rel="apple-touch-icon" href="Image_1760104952910_edit_51856054479435.png" sizes="180x180"> <!-- 苹果设备主屏幕图标 -->
-    <link rel="icon" href="Image_1760104952910_edit_51856054479435.png" sizes="32x32" type="image/png"> <!-- 桌面浏览器大图标 -->
-    <link rel="icon" href="Image_1760104952910_edit_51856054479435.png" sizes="16x16" type="image/png"> <!-- 桌面浏览器小图标 -->
-    <link rel="manifest" href="site.webmanifest"> <!-- PWA图标配置（可选） -->
+    <link rel="icon" href="Image_1760104952910_edit_51856054479435.png" type="image/png">
+    <link rel="shortcut icon" href="Image_1760104952910_edit_51856054479435.png" type="image/png">
+    <link rel="apple-touch-icon" href="Image_1760104952910_edit_51856054479435.png" sizes="180x180">
+    <link rel="icon" href="Image_1760104952910_edit_51856054479435.png" sizes="32x32" type="image/png">
+    <link rel="icon" href="Image_1760104952910_edit_51856054479435.png" sizes="16x16" type="image/png">
     
     <link rel="preload" href="Image_1760104952910_edit_51856054479435.png" as="image" type="image/png">
     <link rel="preload" href="photo-1541339907198-e08756dedf3f.webp" as="image" type="image/webp">
     <link rel="preload" href="微信图片_2025-11-17_185736_358.jpg" as="image" type="image/jpeg">
-    <link rel="preload" href="微信图片_2025-10-30_173541_059.jpg" as="image" type="image/png">
+    <link rel="preload" href="微信图片_2025-12-03_171204_400.png" as="image" type="image/png">
     <link rel="preload" href="微信图片_2025-11-12_165309_230.jpg" as="image" type="image/jpeg">
     <style>
         :root {
@@ -58,25 +57,20 @@
             margin: 0 auto;
         }
         
-        /* 头部样式 - 优化后的液态玻璃透明效果 */
+        /* 头部样式 */
         header {
-            background-color: rgba(255, 255, 255, 0.4); /* 高透明度背景 */
+            background-color: rgba(255, 255, 255, 0.4);
             color: var(--primary-color);
             padding: 1rem 0;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); /* 弱化阴影 */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
             position: sticky;
             top: 0;
             z-index: 100;
-            backdrop-filter: blur(16px); /* 增强模糊效果 */
+            backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
             transition: var(--transition);
             transform: translateY(0);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.15); /* 弱化边框 */
-        }
-        
-        /* 移除导航栏伸缩效果 */
-        header.hidden {
-            transform: translateY(0);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
         }
         
         .header-content {
@@ -247,7 +241,7 @@
             border-radius: 2px;
         }
         
-        /* 新闻动态 */
+        /* 新闻动态 - 修改为6列布局 */
         .news-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
@@ -271,9 +265,13 @@
             transform: translateY(0);
         }
         
+        /* 为6个新闻卡片设置延迟动画 */
         .news-card:nth-child(1) { transition-delay: 0.1s; }
         .news-card:nth-child(2) { transition-delay: 0.2s; }
         .news-card:nth-child(3) { transition-delay: 0.3s; }
+        .news-card:nth-child(4) { transition-delay: 0.4s; }
+        .news-card:nth-child(5) { transition-delay: 0.5s; }
+        .news-card:nth-child(6) { transition-delay: 0.6s; }
         
         .news-card:hover {
             transform: translateY(-10px);
@@ -336,9 +334,13 @@
             color: var(--text-light);
             margin-bottom: 1.5rem;
             line-height: 1.6;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
         }
         
-        /* 新的阅读更多按钮样式 */
+        /* 阅读更多按钮样式 */
         .read-more {
             display: inline-flex;
             align-items: center;
@@ -385,7 +387,33 @@
             transform: translateX(4px);
         }
         
-        /* 活动日历 */
+        /* 查看更多按钮 - 调整间距 */
+        .more-news {
+            text-align: center;
+            margin: 3rem 0 5rem; /* 增加了底边距，从2rem改为5rem */
+        }
+        
+        .more-btn {
+            display: inline-block;
+            padding: 12px 28px;
+            background: white;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border: 2px solid var(--primary-light);
+        }
+        
+        .more-btn:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(26, 95, 122, 0.25);
+        }
+        
+        /* 活动日历 - 调整上边距 */
         .events {
             background-color: white;
             border-radius: var(--border-radius);
@@ -395,6 +423,7 @@
             opacity: 0;
             transform: translateY(30px);
             transition: opacity 0.6s ease, transform 0.6s ease;
+            margin-top: 1rem; /* 增加上边距，使与查看更多按钮有更大间距 */
         }
         
         .events.animate {
@@ -428,6 +457,9 @@
         .event-item:nth-child(1) { transition-delay: 0.1s; }
         .event-item:nth-child(2) { transition-delay: 0.2s; }
         .event-item:nth-child(3) { transition-delay: 0.3s; }
+        .event-item:nth-child(4) { transition-delay: 0.4s; }
+        .event-item:nth-child(5) { transition-delay: 0.5s; }
+        .event-item:nth-child(6) { transition-delay: 0.6s; }
         
         .event-item:hover {
             transform: translateX(5px);
@@ -537,29 +569,13 @@
             }
         }
         
-        @keyframes fadeInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-        
-        @keyframes fadeInRight {
-            from {
-                opacity: 0;
-                transform: translateX(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-        
         /* 响应式设计 */
+        @media (max-width: 1200px) {
+            .news-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
         @media (max-width: 768px) {
             .header-content {
                 flex-direction: column;
@@ -591,6 +607,15 @@
             
             .event-list {
                 grid-template-columns: 1fr;
+            }
+            
+            /* 移动端调整查看更多按钮和活动日历间距 */
+            .more-news {
+                margin: 2.5rem 0 4rem; /* 移动端适当减小间距 */
+            }
+            
+            .events {
+                margin-top: 0.5rem; /* 移动端减小上边距 */
             }
         }
         
@@ -656,7 +681,6 @@
                 min-width: 100%;
             }
             
-            /* 导航菜单优化 */
             nav ul {
                 flex-wrap: wrap;
                 justify-content: center;
@@ -670,7 +694,6 @@
                 font-size: 0.95rem;
             }
             
-            /* 增加滚动边距 */
             #banner, #news-section, #events {
                 scroll-margin-top: 140px;
             }
@@ -749,13 +772,13 @@
             <div class="news-grid">
                 <article class="news-card" id="news-card-1">
                     <div class="news-img">
-                        <img src="微信图片_2025-11-17_185736_358.jpg" alt="新闻图片">
+                        <img src="微信图片_2025-12-03_171204_400.png" alt="新闻图片">
                     </div>
                     <div class="news-content">
-                        <div class="news-date">2025年11月17日&nbsp;&nbsp;13:25 &nbsp;&nbsp;重庆</div>
-                        <h3 class="news-title">重庆市兼善中学龙凤校区开展第34个全国消防日校园消防宣传系列活动</h3>
-                        <p class="news-excerpt">学校结合2025年第34个“119”全国消防日，开展了以“全民消防、生命至上--安全用火用电”为主题的消防系列宣传活动，增强校园消防安全管理能力，提高师生员工消防安全意识和灭火基本技能。学校于11月11日组织全体师生员工消防应急逃生疏散演练、灭火培训和消防安全知识讲座系列活动。</p>
-                        <a href="https://mp.weixin.qq.com/s/bxkVggcphwBItSEB6h7tcQ" class="read-more">
+                        <div class="news-date">2025年11月17日 &nbsp;&nbsp;15:34 &nbsp;&nbsp;重庆</div>
+                        <h3 class="news-title">以"视"促成长 以"导"促提升 || 北碚区进修学院莅临122中（兼善中学龙凤校区）集体视导</h3>
+                        <p class="news-excerpt">为深化新课程标准研究，推动课堂教学精准对接学科核心素养培育目标，全面核查学校育人质量关键指标，引领学校办学高质量提升，11月28日上午，北碚区教师进修学院陈伏兰副书记组织各学科教研员组成视导组赴122中（兼善中学龙凤校区）开展集体视导工作。本次视导通过"随机听课、评课交流、师生座谈、集中反馈"四维调研模式，为我校教育教学"把脉"，为课堂"提质"，为学校发展"助力"。</p>
+                        <a href="https://mp.weixin.qq.com/s/NnWhRREot_JhcNINhGMkdw" class="read-more">
                             阅读更多 <span class="arrow">→</span>
                         </a>
                     </div>
@@ -763,12 +786,12 @@
 
                 <article class="news-card" id="news-card-2">
                     <div class="news-img">
-                        <img src="微信图片_2025-11-12_165309_230.jpg" alt="新闻图片">
+                        <img src="微信图片_2025-11-17_185736_358.jpg" alt="新闻图片">
                     </div>
                     <div class="news-content">
-                        <div class="news-date">2025年11月12日&nbsp;&nbsp;15:21 &nbsp;&nbsp;重庆</div>
-                        <h3 class="news-title">礼承古韵，志启新程 || 重庆市兼善中学龙凤校区九年级青春仪式活动</h3>
-                        <p class="news-excerpt">十四岁，是含苞待放的花季，是扬帆起航的码头，更是从少年走向青年的重要里程碑。2025年11月7日下午，重庆市兼善中学龙凤校区为九年级学子精心策划的“礼承古韵，志启新程”青春礼在致真厅温情上演。这是一场融合传统文化与现代教育的成长仪式，更是一次家校携手、共护青春的深情见证。</p>
+                        <div class="news-date">2025年11月17日 &nbsp;&nbsp;13:25 &nbsp;&nbsp;重庆</div>
+                        <h3 class="news-title">重庆市兼善中学龙凤校区开展第34个全国消防日校园消防宣传系列活动</h3>
+                        <p class="news-excerpt">学校结合2025年第34个"119"全国消防日，开展了以"全民消防、生命至上--安全用火用电"为主题的消防系列宣传活动，增强校园消防安全管理能力，提高师生员工消防安全意识和灭火基本技能。学校于11月11日组织全体师生员工消防应急逃生疏散演练、灭火培训和消防安全知识讲座系列活动。</p>
                         <a href="https://mp.weixin.qq.com/s/XD80rtJm8NAkOfTi6X3QmQ" class="read-more">
                             阅读更多 <span class="arrow">→</span>
                         </a>
@@ -777,17 +800,64 @@
 
                 <article class="news-card" id="news-card-3">
                     <div class="news-img">
-                        <img src="微信图片_2025-10-30_173541_059.jpg" alt="新闻图片">
+                        <img src="微信图片_2025-11-12_165309_230.jpg" alt="新闻图片">
                     </div>
                     <div class="news-content">
-                        <div class="news-date">2025年10月30日&nbsp;&nbsp;11:56 &nbsp;&nbsp;重庆</div>
+                        <div class="news-date">2025年11月12日 &nbsp;&nbsp;15:21 &nbsp;&nbsp;重庆</div>
                         <h3 class="news-title">岁月如歌 芳华永驻 || 我校温情举办重阳节退休教师庆祝活动</h3>
-                        <p class="news-excerpt">秋光正好，情暖重阳。2025年10月29日上午，重庆市第一二二中学（兼善中学龙凤校区）校园里洋溢着温馨与敬意，"岁月如歌 芳华永驻"重阳节退休教师庆祝活动如约举行。曾经在三尺讲台默默耕耘、为教育事业奉献青春的退休教师们重返校园，共叙教育情怀，同庆重阳佳节。</p>
+                        <p class="news-excerpt">十四岁，是含苞待放的花季，是扬帆起航的码头，更是从少年走向青年的重要里程碑。2025年11月7日下午，重庆市兼善中学龙凤校区为九年级学子精心策划的"礼承古韵，志启新程"青春礼在致真厅温情上演。这是一场融合传统文化与现代教育的成长仪式，更是一次家校携手、共护青春的深情见证。</p>
+                        <a href="https://mp.weixin.qq.com/s/XD80rtJm8NAkOfTi6X3QmQ" class="read-more">
+                            阅读更多 <span class="arrow">→</span>
+                        </a>
+                    </div>
+                </article>
+
+                <article class="news-card" id="news-card-4">
+                    <div class="news-img">
+                        <img src="微信图片_2025-12-03_192238_015.jpg" alt="新闻图片">
+                    </div>
+                    <div class="news-content">
+                        <div class="news-date">2025年10月30日 &nbsp;&nbsp;11:56 &nbsp;&nbsp;重庆</div>
+                        <h3 class="news-title">岁月如歌 芳华永驻 || 我校温情举办重阳节退休教师庆祝活动</h3>
+                        <p class="news-excerpt">秋光正好，情暖重阳。2025年10月29日上午，重庆市第一二二中学（兼善中学龙凤校区）校园里洋溢着温馨与敬意，“岁月如歌 芳华永驻”重阳节退休教师庆祝活动如约举行。曾经在三尺讲台默默耕耘、为教育事业奉献青春的退休教师们重返校园，共叙教育情怀，同庆重阳佳节。</p>
                         <a href="https://mp.weixin.qq.com/s/Ufz683lkcVwl10vO1yqmHQ" class="read-more">
                             阅读更多 <span class="arrow">→</span>
                         </a>
                     </div>
                 </article>
+
+                <article class="news-card" id="news-card-5">
+                    <div class="news-img">
+                        <img src="微信图片_2025-12-03_192515_798.jpg" alt="新闻图片">
+                    </div>
+                    <div class="news-content">
+                        <div class="news-date">2025年10月29日 &nbsp;&nbsp;15:48 &nbsp;&nbsp;重庆</div>
+                        <h3 class="news-title">蝉联桂冠、荣耀再续 || 重庆市第一二二中学（兼善中学龙凤校区）田径队参加北碚区第45届中小学生田径运动会简报</h3>
+                        <p class="news-excerpt">10月22-24日，北碚区第 45 届中小学生田径运动会在区体育中心隆重举行。重庆市第一二二中学（兼善龙凤校区）田径队的 10 名运动员在赖彬、张东两位教练的带领下出征，在为期 3 天的赛事中，以顽强的意志、出彩的成绩展现了我校学子的青春风采，最终连续10多年蝉联初中组团体总分第一名的优异成绩。</p>
+                        <a href="https://mp.weixin.qq.com/s/7qfoBsbrlx7-CHBGy_KOFg" class="read-more">
+                            阅读更多 <span class="arrow">→</span>
+                        </a>
+                    </div>
+                </article>
+
+                <article class="news-card" id="news-card-6">
+                    <div class="news-img">
+                        <img src="微信图片_2025-12-03_171204_400.png" alt="新闻图片">
+                    </div>
+                    <div class="news-content">
+                        <div class="news-date">2025年10月23日 &nbsp;&nbsp;18:04 &nbsp;&nbsp;重庆</div>
+                        <h3 class="news-title">金秋共研韵 佳课启新思 || 北碚区2025年湘版新教材中小学音乐教师全员培训活动简报</h3>
+                        <p class="news-excerpt">为深化我区音乐教师对湘版新教材的理解，推动新课标理念精准落地，2025年10月21日上午，由北碚区教师进修学院主办、重庆市第一二二中学承办的“北碚区2025年湘版新教材中小学音乐教师全员培训”在重庆市第一二二中学校成功举办。本次培训融合课例展示与专家讲座等多元形式，为参训教师搭建了一个交流互鉴、共促发展的专业平台，有效助力区域音乐教育质量提升。</p>
+                        <a href="https://mp.weixin.qq.com/s/c0QZUQ3OQmnBOKIhL5kdRw" class="read-more">
+                            阅读更多 <span class="arrow">→</span>
+                        </a>
+                    </div>
+                </article>
+            </div>
+            
+            <!-- 查看更多按钮 -->
+            <div class="more-news">
+                <a href="#" class="more-btn">查看更多新闻</a>
             </div>
         </section>
 
@@ -797,19 +867,6 @@
             <div class="events" id="events">
                 <div class="event-list">
                     <div class="event-item" id="event-item-1">
-                        <div class="event-date">
-                            <div class="event-day">11月</div>
-                            <div class="event-month">下旬</div>
-                        </div>
-                        <div class="event-info">
-                            <h3>待定</h3>
-                            <p>时间: 待定</p>
-                            <p>地点: 待定</p>
-                            <p>内容: 待定</p>
-                        </div>
-                    </div>
-
-                    <div class="event-item" id="event-item-2">
                         <div class="event-date">
                             <div class="event-day">12月</div>
                             <div class="event-month">上旬</div>
@@ -822,10 +879,62 @@
                         </div>
                     </div>
 
-                    <div class="event-item" id="event-item-3">
+                    <div class="event-item" id="event-item-2">
                         <div class="event-date">
                             <div class="event-day">12月</div>
                             <div class="event-month">中旬</div>
+                        </div>
+                        <div class="event-info">
+                            <h3>待定</h3>
+                            <p>时间: 待定</p>
+                            <p>地点: 待定</p>
+                            <p>内容: 待定</p>
+                        </div>
+                    </div>
+
+                    <div class="event-item" id="event-item-3">
+                        <div class="event-date">
+                            <div class="event-day">12月</div>
+                            <div class="event-month">下旬</div>
+                        </div>
+                        <div class="event-info">
+                            <h3>元旦汇演彩排</h3>
+                            <p>时间: 2025年12月30日下午</p>
+                            <p>地点: 学校操场</p>
+                            <p>内容: 元旦汇演节目彩排</p>
+                        </div>
+                    </div>
+                    
+                    <div class="event-item" id="event-item-4">
+                        <div class="event-date">
+                            <div class="event-day">12月</div>
+                            <div class="event-month">下旬</div>
+                        </div>
+                        <div class="event-info">
+                            <h3>元旦汇演正式演出</h3>
+                            <p>时间: 2025年12月31日下午</p>
+                            <p>地点: 学校操场</p>
+                            <p>内容: 各班才艺表演</p>
+                        </div>
+                    </div>
+                    
+                    <div class="event-item" id="event-item-5">
+                        <div class="event-date">
+                            <div class="event-day">2026年</div>
+                            <div class="event-month">1月上旬</div>
+                        </div>
+                        <div class="event-info">
+                            <h3>待定</h3>
+                            <p>时间: 待定</p>
+                            <p>地点: 待定</p>
+                            <p>内容: 待定</p>
+                        </div>
+                    </div>
+                    
+                    <div class="event-item" id="event-item-6">
+                        <div class="event-date">
+                            <div class="event-day">2026年</div>
+                            <div class="event-month">1月中旬</div>
                         </div>
                         <div class="event-info">
                             <h3>待定</h3>
@@ -917,10 +1026,6 @@
                     }
                 });
 
-                // 移除导航栏隐藏/显示效果，保持固定
-                const header = document.getElementById('header');
-                header.classList.remove('hidden');
-                
                 // 触发滚动动画
                 checkScrollAnimations();
             });
@@ -955,6 +1060,15 @@
                             img.src = img.src;
                         }
                     });
+                });
+            }
+            
+            // 查看更多按钮点击事件（可选功能）
+            const moreBtn = document.querySelector('.more-btn');
+            if (moreBtn) {
+                moreBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    alert('更多新闻功能正在开发中，敬请期待！');
                 });
             }
         });
